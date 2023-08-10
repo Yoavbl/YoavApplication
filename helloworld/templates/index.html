@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Dashboard | Find Partner</title>
+</head>
+
+<body>
+
+    <div class="main-container">
+        <div class="profile">
+            <div class="title mb-5">
+                <h4>Your Profile</h4>
+            </div>
+            <div class="profile_picture">
+                <img src="{{ user.profile_picture }}" width="200px" height="200px" alt="">
+            </div>
+            <div class="name mb-5">
+                &nbsp;
+                &nbsp;
+                <h5>{{user.first_name}} {{user.last_name}}</h5>
+            </div>
+            <div class="details w-75">
+                {{user.bio}}
+            </div>
+
+        </div>
+        <div class="dashboard">
+            <div class="title">
+                <h2>Find you Soulmate</h2>
+            </div>
+            <div class="search_container">
+
+                <form method="post" action="/find_by_picture" enctype="multipart/form-data" class="picture_find">
+                    <h3 class="text-primary mb-3">Find Similar By Picture</h3>
+
+                    <div class="input-group mb-3">
+                        <input type="file" name="file" class="form-control" id="inputGroupFile02">
+                    </div>
+
+                    <button type="submit" class="btn w-25">Find</button>
+
+                </form>
+
+                <form method="post" action="/find_by_details" class="details_find">
+                    <h3 class="text-primary mb-3">Find By Details</h3>
+
+                    <div class="input_div mb-3">
+
+                        <div class="form-floating w-50">
+                            <input type="number" name="age" class="form-control" placeholder="20">
+                            <label for="floatingPassword">Age</label>
+                        </div>
+
+                        &nbsp;
+
+                        <div class="gender-div w-50">
+                            <div class="form-floating">
+                                <select class="form-select" name="gender" id="floatingSelect"
+                                    aria-label="Floating label select example">
+                                    <option value="male" selected>male</option>
+                                    <option value="female">female</option>
+                                </select>
+                                <label for="floatingSelect">Select Gender</label>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="input_div mb-3">
+
+                        <div class="color-div w-50">
+                            <div class="form-floating ">
+                                <input type="text" name="hobby" class="form-control" placeholder="fishing">
+                                <label for="floatingPassword">Hobby</label>
+                            </div>
+                        </div>
+                        &nbsp;
+
+                        <div class="form-floating w-50">
+                            <input type="text" name="education" class="form-control" placeholder="Education">
+                            <label for="floatingPassword">Education</label>
+                        </div>
+
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input type="text" name="designation" class="form-control"
+                            placeholder="Designation / Occupation">
+                        <label for="floatingPassword">Designation / Occupation</label>
+                    </div>
+                    &nbsp;
+
+                    <button type="submit" class="btn w-25">Find</button>
+
+
+
+                </form>
+
+
+
+            </div>
+
+        </div>
+    </div>
+
+</body>
+
+</html>

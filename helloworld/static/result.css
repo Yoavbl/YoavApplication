@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    font-family: 'Roboto', sans-serif;
+
+}
+
+body{
+
+    height:100vh;
+    width: 100vw;
+    background-size: cover;
+    background-position:center;
+    background-repeat: no-repeat;
+    overflow-x: hidden;
+    /* background-image: linear-gradient(to right top, #f7657a, #f265a2, #dc70c9, #b482ea, #7493ff); */
+
+    font-size: smaller;
+
+}
+
+.main-container{
+    width: 100%;
+    height: 100%;
+    padding: 50px;
+    text-align: center;
+}
+
+.main-container .result{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.title{
+    color: #f46171;
+    font-weight: bold;
+
+}
+
+.main-container .result .row{
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ flex-direction: row;
+ flex-wrap: wrap;
+}
+
+.main-container .result .row .details{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+table{
+    /* border: 1px solid cornflowerblue; */
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    /* box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px; */
+
+}
+
+td, th{
+    padding: 20px;
+}
+
+thead{
+    background-color: #f46171;
+    color: white;
+}

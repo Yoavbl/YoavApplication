@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='signup.css') }}">
+    <title>SignUp | Find Partner</title>
+</head>
+
+<body>
+
+    <form method="POST" action="/signup" enctype="multipart/form-data">
+
+        <div class="page1">
+            <div class="heading p-5">
+                <h2 class="title">Be a Life Partner</h2>
+            </div>
+            <div class="input_div">
+                <div class="form-floating mb-3 w-50">
+                    <input type="text" class="form-control" name="first_name" placeholder="John">
+                    <label for="floatingInput">First Name</label>
+                </div>
+                &nbsp;
+                <div class="form-floating mb-3 w-50">
+                    <input type="text" class="form-control" name="last_name" placeholder="Doe">
+                    <label for="floatingPassword">Last Name</label>
+                </div>
+            </div>
+
+            <div class="input_div">
+
+                <div class="form-floating mb-3 w-50">
+                    <input type="number" name="age" class="form-control" placeholder="20">
+                    <label for="floatingPassword">Age</label>
+                </div>
+                &nbsp;
+
+                <div class="form-floating mb-3 w-50">
+                    <input type="text" name="height" class="form-control" placeholder="5.6 ft">
+                    <label for="floatingPassword">Height</label>
+                </div>
+
+            </div>
+
+
+            <div class="input_div mb-3">
+                <div class="gender-div w-50">
+                    <div class="form-floating">
+                        <select class="form-select" name="gender" id="gender"
+                            aria-label="Floating label select example">
+                            <option value="male" selected>male</option>
+                            <option value="female">female</option>
+                        </select>
+                        <label for="floatingSelect">Select Gender</label>
+                    </div>
+                </div>
+                &nbsp;
+                <div class="color-div w-50">
+                    <div class="form-floating ">
+                        <input type="text" name="hobby" class="form-control" placeholder="fishing">
+                        <label for="floatingPassword">your Hobby</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="text" name="education" class="form-control" placeholder="Education">
+                <label for="floatingPassword">Education</label>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="text" name="designation" class="form-control" placeholder="Designation / Occupation">
+                <label for="floatingPassword">Designation / Occupation</label>
+            </div>
+
+
+        </div>
+        <div class="page2 p-5">
+
+            <div class="form-floating mb-3">
+                <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                <label for="floatingInput">Email address</label>
+            </div>
+
+            <div class="form-floating mb-5">
+                <input type="text" name="phone_number" class="form-control" id="floatingInput"
+                    placeholder="name@example.com">
+                <label for="floatingInput">Phone Number</label>
+            </div>
+
+            <div class="mb-3">
+                <label for="formFile" class="form-label">Upload Your Profile Picture</label>
+                <input class="form-control" name="profile_picture" type="file" id="formFile">
+            </div>
+
+            <div class="form-floating mb-5">
+                <textarea class="form-control" name="bio" placeholder="Anythin Special About You?"
+                    id="floatingTextarea2" style="height: 100px"></textarea>
+                <label for="floatingTextarea2">Bio</label>
+            </div>
+
+            <button class="btn w-100" type="submit">Sign Up</button>
+
+        </div>
+    </form>
+
+
+
+</body>
+
+</html>

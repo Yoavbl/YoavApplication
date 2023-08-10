@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='result.css') }}">
+    <title>Result | Find Partner</title>
+</head>
+
+<body>
+
+    <div class="main-container">
+        <div class="result">
+            {% if result %}
+            <h1 class="title mb-4">Result Found</h1>
+            <div class="row">
+                <table>
+                    <thead>
+                        <th>Profile Picture</th>
+                        <th>First name</th>
+                        <th>Last name</th>
+                        <th>Age</th>
+                        <th>Height</th>
+                        <th>Education</th>
+                        <th>Designation</th>
+                        <th>Hobby</th>
+                        <th>Bio</th>
+                        <th>Contact Me</th>
+                    </thead>
+
+                    <tbody>
+                        {% for user in result %}
+                        <tr>
+                            <td>
+                                <img src="{{ user.profile_picture }}" height="200px">
+                            </td>
+                            <td>{{user.first_name}}</td>
+                            <td>{{user.last_name}}</td>
+                            <td>{{user.age}}</td>
+                            <td>{{user.height}}</td>
+                            <td>{{user.education}}</td>
+                            <td>{{user.designation}}</td>
+                            <td>{{user.hobby}}</td>
+                            <td>{{user.bio}}</td>
+                            <td><a href="mailto:{{user.email}}">Contact me</a></td>
+
+                        </tr>
+
+                        {% endfor %}
+
+                    </tbody>
+
+                </table>
+
+
+
+            </div>
+            {% else %}
+
+            <h1 class="title text-center text-dark">No Result Found</h1>
+
+            {% endif %}
+
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
