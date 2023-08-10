@@ -3,10 +3,17 @@ import os
 
 TABLE_NAME = "users"
 AWS_REGION = "eu-north-1"
-BUCKET_NAME = "usersmediabucket"
+BUCKET_NAME = "yoavbucketusers"
 
-dynamodb = boto3.client("dynamodb", region_name=AWS_REGION)
-s3_client = boto3.client("s3", region_name="us-west-2")
+
+dynamodb = boto3.client(
+    "dynamodb",
+    region_name=AWS_REGION,
+)
+s3_client = boto3.client(
+    "s3",
+    region_name="us-west-2",
+)
 
 rekognition_client = boto3.client("rekognition", region_name="us-west-2")
 
@@ -19,7 +26,7 @@ def upload_picture(file, key=None):
 
 
 def delete_picture(key=None):
-    s3_client.delete_object(Bucket=BUCKET_NAME, key=key)
+    s3_client.delete_object(Bucket=BUCKET_NAME, Key=key)
     return True
 
 
