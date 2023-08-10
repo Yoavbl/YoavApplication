@@ -9,6 +9,7 @@ from helloworld.utils import (
     get_file_url,
     get_user_by_image,
     filter_data,
+    delete_picture,
 )
 import os
 from helloworld.flaskrun import flaskrun
@@ -62,22 +63,23 @@ def find_by_picture():
 
     if request.method == "POST":
         file = request.files["file"]
-        # Save the uploaded file temporarily
-        uploaded_file_path = os.path.join("uploads", file.filename)
-        file.save(uploaded_file_path)
+        key = "temp"
+        upload_picture(file, key=key)
+        file_path = os.path.join(key, file.filename)
 
         target_images = get_image_list()
         users_images_url = []
 
         # Compare faces with each image
         for target_image in target_images:
-            face_matches = compare_faces(uploaded_file_path, target_image)
-            if face_matches:
-                users_images_url.append(
-                    get_file_url(target_image),
-                )
+            if not target_image.startswith(key):
+                face_matches = compare_faces(file_path, target_image)
+                if face_matches:
+                    users_images_url.append(
+                        get_file_url(target_image),
+                    )
 
-        os.remove(uploaded_file_path)
+        delete_picture(file_path)
 
         result = []
         for url in users_images_url:

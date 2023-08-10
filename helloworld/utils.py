@@ -1,4 +1,5 @@
 import boto3
+import os
 
 TABLE_NAME = "users"
 AWS_REGION = "eu-north-1"
@@ -10,11 +11,16 @@ s3_client = boto3.client("s3", region_name="us-west-2")
 rekognition_client = boto3.client("rekognition", region_name="us-west-2")
 
 
-def upload_picture(file):
-    filename = file.filename
+def upload_picture(file, key=None):
+    filename = file.filename if not key else os.path.join(key, file.filename)
     s3_client.upload_fileobj(file, BUCKET_NAME, filename)
     profile_picture = f"https://{BUCKET_NAME}.s3.amazonaws.com/{filename}"
     return profile_picture
+
+
+def delete_picture(key=None):
+    s3_client.delete_object(Bucket=BUCKET_NAME, key=key)
+    return True
 
 
 def save_user_data(data):
@@ -66,14 +72,13 @@ def get_image_list():
 
 
 def compare_faces(source_image_path, target_image):
-    with open(source_image_path, "rb") as local_source_image_file:
-        response = rekognition_client.compare_faces(
-            SourceImage={"Bytes": local_source_image_file.read()},
-            TargetImage={"S3Object": {"Bucket": BUCKET_NAME, "Name": target_image}},
-            SimilarityThreshold=80,
-        )
+    response = rekognition_client.compare_faces(
+        SourceImage={"S3Object": {"Bucket": BUCKET_NAME, "Name": source_image_path}},
+        TargetImage={"S3Object": {"Bucket": BUCKET_NAME, "Name": target_image}},
+        SimilarityThreshold=80,
+    )
 
-        return response.get("FaceMatches", [])
+    return response.get("FaceMatches", [])
 
 
 # Function to generate S3 object URL

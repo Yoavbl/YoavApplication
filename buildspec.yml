@@ -16,6 +16,7 @@ artifacts:
     - 'template.yml'
     - 'scripts/**/*'
     - 'helloworld/**/*'
+    - 'uploads/**/*'
     - 'helloworld/**/*.py'
     - 'helloworld/**/*.html'
     - 'helloworld/**/*.css'
