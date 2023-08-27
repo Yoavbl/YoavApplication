@@ -82,7 +82,7 @@ def compare_faces(source_image_path, target_image):
     response = rekognition_client.compare_faces(
         SourceImage={"S3Object": {"Bucket": BUCKET_NAME, "Name": source_image_path}},
         TargetImage={"S3Object": {"Bucket": BUCKET_NAME, "Name": target_image}},
-        SimilarityThreshold=80,
+        SimilarityThreshold=70,
     )
 
     return response.get("FaceMatches", [])
